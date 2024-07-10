@@ -33,6 +33,10 @@ const ChatActions = () => {
 
   const SendMessageHandler = async (e) => {
     e.preventDefault()
+    if (message === '' ) {
+      alert('message can not be blank')
+      return
+    }
     setLoading(true)
     let newMsg = await dispatch(sendMessage(values))
     socket.emit('sendMessage', newMsg.payload)
